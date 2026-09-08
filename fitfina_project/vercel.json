@@ -3,11 +3,7 @@
   "rewrites": [
     {
       "source": "/api/recommend",
-      "destination": "/api/recommend/index.py"
-    },
-    {
-      "source": "/((?!api/).*)",
-      "destination": "/$1"
+      "destination": "/api/recommend/app.py"
     }
   ]
 }
