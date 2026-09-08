@@ -3,72 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitFinal - AI 헬스 매니저</title>
+  <title>FitFinal - AI 맞춤 헬스케어 & 다이어트 매니저</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- 네비게이션 바 -->
-<header class="app-header">
-  <div class="header-container">
-    <div class="logo">FitFinal <span>AI</span></div>
-    <nav class="nav-menu">
-      <a href="#hero" class="nav-link active">주요기능</a>
-      <a href="#routine" class="nav-link">AI 루틴 매니저</a>
-      <a href="#tracker" class="nav-link">일일 기록장</a>
-    </nav>
-    <a href="#routine" class="nav-btn">무료 체험하기</a>
-  </div>
-</header>
 
-  <!-- Section 1: 홈 / 소개 -->
-  <section id="home" class="section">
-    <h1>당신만을 위한 Personal AI 트레이너</h1>
-    <p>체중 감량부터 근량 증진까지, AI 맞춤형 스케줄링으로 시작하세요.</p>
-    <a href="#ai-manager" class="btn">지금 추천받기</a>
-  </section>
-
-  <!-- Section 2: AI 기능 -->
-  <section id="ai-manager" class="section">
-    <h2>AI 맞춤 루틴 생성</h2>
-    <form id="ai-form">
-      <div class="form-group">
-        <label for="goal">운동 목표</label>
-        <select id="goal" required>
-          <option value="">선택하세요</option>
-          <option value="근육량 증진">근육량 증진 (벌크업)</option>
-          <option value="체체방 감량">체지방 감량 (다이어트)</option>
-          <option value="체력 증진">체력 및 건강 유지</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="level">운동 수준</label>
-        <select id="level" required>
-          <option value="">선택하세요</option>
-          <option value="초급자">초급자 (헬린이)</option>
-          <option value="중급자">중급자 (1년 이상)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="days">주당 운동 횟수</label>
-        <input type="number" id="days" min="1" max="7" placeholder="예: 3" required>
-      </div>
-      <button type="submit" id="submit-btn">AI 루틴 생성하기</button>
-    </form>
-
-    <!-- AI 결과 / 상태 안내 영역 -->
-    <div id="status-msg" class="status-msg"></div>
-    <div id="ai-result" class="result-box hidden"></div>
-  </section>
-
-  <!-- Section 3: 일일 기록장 -->
-  <section id="tracker" class="section">
-    <h2>오늘의 운동 & 식단 기록</h2>
-    <div class="tracker-card">
-      <p>오늘 한 운동과 식단을 기록하여 꾸준한 습관을 만들어보세요!</p>
-      <textarea placeholder="예: 스쿼트 5세트, 닭가슴살 샐러드 섭취"></textarea>
-      <button class="btn-secondary" onclick="alert('기록이 저장되었습니다!')">저장하기</button>
+  <!-- 상단 네비게이션 헤더 (무료 체험하기 버튼 제거) -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo">FitFinal <span>AI</span></div>
+      <nav class="nav-menu">
+        <a href="#hero" class="nav-link active">주요기능</a>
+        <a href="#routine" class="nav-link">AI 루틴 매니저</a>
+        <a href="#tracker" class="nav-link">일일 기록장</a>
+      </nav>
     </div>
-  </section>
+  </header>
+
+  <main class="main-container">
+    
+    <!-- Hero 섹션 -->
+    <section id="hero" class="hero-section">
+      <span class="badge">AI-POWERED HEALTHCARE MANAGER</span>
+      <h1>당신만을 위한 <span>Personal AI 트레이너</span></h1>
+      <p class="subtitle">
+        개인의 신체 스펙과 목표에 맞는 맞춤형 운동 스케줄과 식단 가이드를 AI로 제공합니다.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon">🤖</div>
+          <h3>AI 맞춤 루틴</h3>
+          <p>개인 신체 스펙과 운동 목적을 분석하여 최적의 운동 스케줄 제공</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🥗</div>
+          <h3>식단 가이드</h3>
+          <p>목표 칼로리 및 영양소 비율(탄/단/지) 맞춤 추천</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h3>일일 기록장</h3>
+          <p>오늘의 운동량과 식단을 간편하게 기록하고 체크하는 대시보드</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 대시보드 영역 -->
+    <div class="dashboard-grid">
+      
+      <!-- AI 루틴 매니저 -->
+      <section id="routine" class="card-section">
+        <div class="section-header">
+          <h2>🤖 AI 맞춤 루틴 생성</h2>
+          <p>조건을 선택하고 AI 추천 버튼을 눌러주세요.</p>
+        </div>
+
+        <form id="recommend-form">
+          <div class="form-group">
+            <label for="goal">운동 목표</label>
+            <select id="goal" name="goal">
+              <option value="체중 감량 및 체지방 감소">체중 감량 & 체지방 감소</option>
+              <option value="근육량 증진 및 근성장">근육량 증진 (근성장)</option>
+              <option value="체력 증진 및 건강 유지">체력 증진 & 건강 유지</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="level">운동 수준</label>
+            <select id="level" name="level">
+              <option value="초보자">초보자 (입문 3개월 미만)</option>
+              <option value="중급자">중급자 (분할 운동 가능)</option>
+              <option value="상급자">상급자</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="days">주당 운동 횟수</label>
+            <input type="number" id="days" name="days" placeholder="예: 3" min="1" max="7" value="3">
+          </div>
+
+          <button type="submit" id="recommend-btn" class="btn-primary">AI 루틴 생성하기</button>
+        </form>
+
+        <div id="result-area" class="result-box hidden">
+          <div class="result-title">💡 AI 추천 결과</div>
+          <div id="result-content" class="result-body"></div>
+        </div>
+      </section>
+
+      <!-- 일일 헬스 기록장 -->
+      <section id="tracker" class="card-section">
+        <div class="section-header">
+          <h2>📝 오늘의 운동 & 식단 기록</h2>
+          <p>꾸준한 기록으로 변화하는 신체를 확인하세요.</p>
+        </div>
+
+        <form id="record-form">
+          <div class="form-group">
+            <label for="workout-log">오늘 한 운동</label>
+            <input type="text" id="workout-log" placeholder="예: 스쿼트 4세트, 런닝머신 30분">
+          </div>
+
+          <div class="form-group">
+            <label for="diet-log">오늘 먹은 식단</label>
+            <textarea id="diet-log" placeholder="예: 아침 - 닭가슴살 샐러드&#10;점심 - 현미밥과 제육볶음"></textarea>
+          </div>
+
+          <button type="button" id="save-log-btn" class="btn-secondary">저장하기</button>
+        </form>
+        <div id="log-status" style="margin-top: 10px; font-size: 0.85rem; color: #22c55e;"></div>
+      </section>
+
+    </div>
+
+  </main>
 
   <script src="js/main.js"></script>
 </body>
