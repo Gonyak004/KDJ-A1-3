@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/recommend",
-      "destination": "/api/recommend/app.py"
+      "destination": "/api/app.py"
     }
   ]
 }
