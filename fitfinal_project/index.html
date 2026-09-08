@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- 상단 네비게이션 헤더 (무료 체험하기 버튼 제거) -->
+  <!-- 상단 네비게이션 헤더 -->
   <header class="app-header">
     <div class="header-container">
       <div class="logo">FitFinal <span>AI</span></div>
@@ -22,100 +22,106 @@
 
   <main class="main-container">
     
-    <!-- Hero 섹션 -->
+    <!-- 1. 메인 / FitFinal 서비스 상세 소개 섹션 (#hero) -->
     <section id="hero" class="hero-section">
       <span class="badge">AI-POWERED HEALTHCARE MANAGER</span>
-      <h1>당신만을 위한 <span>Personal AI 트레이너</span></h1>
+      <h1>당신만을 위한 <span>Personal AI 트레이너 FitFinal</span></h1>
       <p class="subtitle">
-        개인의 신체 스펙과 목표에 맞는 맞춤형 운동 스케줄과 식단 가이드를 AI로 제공합니다.
+        FitFinal은 비싼 PT나 복잡한 운동 계산 없이, 최신 인공지능이 <strong>당신의 체형, 운동 수준, 목표</strong>에 맞춰 최적의 운동 스케줄과 식단을 스마트하게 안내해 주는 스마트 헬스케어 매니저입니다.
       </p>
 
+      <!-- FitFinal 핵심 특징 소개 카드 4선 -->
       <div class="features-grid">
         <div class="feature-card">
           <div class="icon">🤖</div>
-          <h3>AI 맞춤 루틴</h3>
-          <p>개인 신체 스펙과 운동 목적을 분석하여 최적의 운동 스케줄 제공</p>
+          <h3>AI 맞춤 운동 추천</h3>
+          <p>운동 목적(다이어트, 근성장, 건강 유지)과 수준에 완벽히 부합하는 일자별 운동 루틴 생성</p>
         </div>
         <div class="feature-card">
           <div class="icon">🥗</div>
-          <h3>식단 가이드</h3>
-          <p>목표 칼로리 및 영양소 비율(탄/단/지) 맞춤 추천</p>
+          <h3>스마트 식단 가이드</h3>
+          <p>일일 목표 칼로리와 영양소 비율(탄단지)을 고려한 영양 가이드 제시</p>
         </div>
         <div class="feature-card">
-          <div class="icon">📊</div>
-          <h3>일일 기록장</h3>
-          <p>오늘의 운동량과 식단을 간편하게 기록하고 체크하는 대시보드</p>
+          <div class="icon">📝</div>
+          <h3>일일 운동 & 식단 기록장</h3>
+          <p>오늘 수행한 운동과 섭취한 식단을 직관적으로 기록하고 관리하는 개인용 대시보드</p>
         </div>
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h3>실시간 맞춤 피드백</h3>
+          <p>질의 및 목표 변경 시 AI가 실시간 분석으로 새로운 루틴 보정</p>
+        </div>
+      </div>
+
+      <!-- 소개 하단 빠른 이동 버튼 -->
+      <div style="margin-top: 2.5rem;">
+        <a href="#routine" class="nav-link" style="background-color: var(--primary); color: white; padding: 0.8rem 1.8rem; border-radius: 30px; font-weight: 700; text-decoration: none;">AI 루틴 만들어보기 →</a>
       </div>
     </section>
 
-    <!-- 대시보드 영역 -->
-    <div class="dashboard-grid">
-      
-      <!-- AI 루틴 매니저 -->
-      <section id="routine" class="card-section">
-        <div class="section-header">
-          <h2>🤖 AI 맞춤 루틴 생성</h2>
-          <p>조건을 선택하고 AI 추천 버튼을 눌러주세요.</p>
+    <!-- 2. AI 루틴 매니저 섹션 (#routine) -->
+    <section id="routine" class="card-section full-width-section">
+      <div class="section-header">
+        <h2>🤖 AI 맞춤 루틴 생성</h2>
+        <p>조건을 선택하고 AI 추천 버튼을 눌러주세요.</p>
+      </div>
+
+      <form id="recommend-form">
+        <div class="form-group">
+          <label for="goal">운동 목표</label>
+          <select id="goal" name="goal">
+            <option value="체중 감량 및 체지방 감소">체중 감량 & 체지방 감소</option>
+            <option value="근육량 증진 및 근성장">근육량 증진 (근성장)</option>
+            <option value="체력 증진 및 건강 유지">체력 증진 & 건강 유지</option>
+          </select>
         </div>
 
-        <form id="recommend-form">
-          <div class="form-group">
-            <label for="goal">운동 목표</label>
-            <select id="goal" name="goal">
-              <option value="체중 감량 및 체지방 감소">체중 감량 & 체지방 감소</option>
-              <option value="근육량 증진 및 근성장">근육량 증진 (근성장)</option>
-              <option value="체력 증진 및 건강 유지">체력 증진 & 건강 유지</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="level">운동 수준</label>
-            <select id="level" name="level">
-              <option value="초보자">초보자 (입문 3개월 미만)</option>
-              <option value="중급자">중급자 (분할 운동 가능)</option>
-              <option value="상급자">상급자</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="days">주당 운동 횟수</label>
-            <input type="number" id="days" name="days" placeholder="예: 3" min="1" max="7" value="3">
-          </div>
-
-          <button type="submit" id="recommend-btn" class="btn-primary">AI 루틴 생성하기</button>
-        </form>
-
-        <div id="result-area" class="result-box hidden">
-          <div class="result-title">💡 AI 추천 결과</div>
-          <div id="result-content" class="result-body"></div>
-        </div>
-      </section>
-
-      <!-- 일일 헬스 기록장 -->
-      <section id="tracker" class="card-section">
-        <div class="section-header">
-          <h2>📝 오늘의 운동 & 식단 기록</h2>
-          <p>꾸준한 기록으로 변화하는 신체를 확인하세요.</p>
+        <div class="form-group">
+          <label for="level">운동 수준</label>
+          <select id="level" name="level">
+            <option value="초보자">초보자 (입문 3개월 미만)</option>
+            <option value="중급자">중급자 (분할 운동 가능)</option>
+            <option value="상급자">상급자</option>
+          </select>
         </div>
 
-        <form id="record-form">
-          <div class="form-group">
-            <label for="workout-log">오늘 한 운동</label>
-            <input type="text" id="workout-log" placeholder="예: 스쿼트 4세트, 런닝머신 30분">
-          </div>
+        <div class="form-group">
+          <label for="days">주당 운동 횟수</label>
+          <input type="number" id="days" name="days" placeholder="예: 3" min="1" max="7" value="3">
+        </div>
 
-          <div class="form-group">
-            <label for="diet-log">오늘 먹은 식단</label>
-            <textarea id="diet-log" placeholder="예: 아침 - 닭가슴살 샐러드&#10;점심 - 현미밥과 제육볶음"></textarea>
-          </div>
+        <button type="submit" id="recommend-btn" class="btn-primary">AI 루틴 생성하기</button>
+      </form>
 
-          <button type="button" id="save-log-btn" class="btn-secondary">저장하기</button>
-        </form>
-        <div id="log-status" style="margin-top: 10px; font-size: 0.85rem; color: #22c55e;"></div>
-      </section>
+      <div id="result-area" class="result-box hidden">
+        <div class="result-title">💡 AI 추천 결과</div>
+        <div id="result-content" class="result-body"></div>
+      </div>
+    </section>
 
-    </div>
+    <!-- 3. 일일 기록장 섹션 (#tracker) -->
+    <section id="tracker" class="card-section full-width-section" style="margin-top: 3rem;">
+      <div class="section-header">
+        <h2>📝 오늘의 운동 & 식단 기록</h2>
+        <p>꾸준한 기록으로 변화하는 신체를 확인하세요.</p>
+      </div>
+
+      <form id="record-form">
+        <div class="form-group">
+          <label for="workout-log">오늘 한 운동</label>
+          <input type="text" id="workout-log" placeholder="예: 스쿼트 4세트, 런닝머신 30분">
+        </div>
+
+        <div class="form-group">
+          <label for="diet-log">오늘 먹은 식단</label>
+          <textarea id="diet-log" placeholder="예: 아침 - 닭가슴살 샐러드&#10;점심 - 현미밥과 제육볶음"></textarea>
+        </div>
+
+        <button type="button" id="save-log-btn" class="btn-secondary">저장하기</button>
+      </form>
+      <div id="log-status" style="margin-top: 10px; font-size: 0.85rem; color: #22c55e;"></div>
+    </section>
 
   </main>
 
