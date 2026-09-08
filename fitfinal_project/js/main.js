@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
       resultContent.innerText = 'AI 분석 진행 중입니다. 잠시만 기다려주세요...';
 
       try {
-        const response = await fetch('/api/recommend', {
+        // Vercel 자동 파일 시스템 라우팅 경로(/api/app.py -> /api/app)로 수정
+        const response = await fetch('/api/app', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ goal, level, days })
