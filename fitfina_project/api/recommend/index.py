@@ -8,16 +8,14 @@ if api_key:
     genai.configure(api_key=api_key)
 
 class handler(BaseHTTPRequestHandler):
-    # GET 요청 처리 (브라우저 직접 접근 시)
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type', 'application/json; charset=utf-8')
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
-        res = {"message": "FitFinal AI API Server가 정상 작동 중입니다. POST 요청을 사용해 주세요."}
+        res = {"message": "FitFinal API Server running"}
         self.wfile.write(json.dumps(res, ensure_ascii=False).encode('utf-8'))
 
-    # POST 요청 처리 (AI 추천 버튼 클릭 시)
     def do_POST(self):
         try:
             content_length = int(self.headers.get('Content-Length', 0))
