@@ -280,3 +280,119 @@ textarea {
   color: var(--text-sub);
   font-style: italic;
 }
+
+/* 홈 화면 세련된 레이아웃 디자인 */
+.hero-section {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0% #f1f5f9 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.hero-badge-wrap {
+  margin-bottom: 1rem;
+}
+
+.hero-cta-group {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hero-cta-group button {
+  max-width: 220px;
+}
+
+.content-section-box, .brand-story-box {
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.section-title-wrap {
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
+
+.sub-heading-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: #eff6ff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.story-badge {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.section-title-wrap h2 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--text-main);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.feature-card {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+}
+
+.feature-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.feature-desc {
+  font-size: 0.92rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.brand-story-box {
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+}
+
+.story-quote {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+.story-text {
+  font-size: 0.98rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}

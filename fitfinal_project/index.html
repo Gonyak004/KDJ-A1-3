@@ -23,41 +23,70 @@
 
   <main class="main-container">
     
-    <!-- 홈 -->
+    <!-- 1. 홈 화면 (세련되게 개편) -->
     <section id="home-page" class="tab-content active">
       <div class="hero-section">
-        <span class="badge">SMART HEALTHCARE PLATFORM</span>
-        <h1>지속 가능한 건강 관리의 시작 <span>FitFinal</span></h1>
+        <div class="hero-badge-wrap">
+          <span class="badge">SMART HEALTHCARE PLATFORM</span>
+        </div>
+        <h1>지속 가능한 건강 관리의 시작 <br><span>FitFinal</span></h1>
         <p class="subtitle main-intro-text">
-          개인 맞춤 운동 플랜과 식단 가이드, 전문 유튜브 운동 영상까지 한곳에서 관리하세요.
+          데이터 분석과 밀착 케어를 결합해 누구나 중도 포기 없이 지속 가능한 건강 관리를 완성하는 스마트 헬스케어 플랫폼입니다.
         </p>
 
+        <div class="hero-cta-group">
+          <button class="btn-primary" onclick="switchTab('routine-page')">AI 맞춤 루틴 시작하기 →</button>
+          <button class="btn-secondary" onclick="switchTab('guide-page')">운동 영상 검색하기 →</button>
+        </div>
+      </div>
+
+      <!-- 서비스 핵심 가치 섹션 -->
+      <div class="content-section-box">
+        <div class="section-title-wrap">
+          <span class="sub-heading-badge">CORE VALUES</span>
+          <h2>서비스 핵심 가치</h2>
+        </div>
+        
         <div class="features-grid">
           <div class="feature-card">
             <div class="icon">🎯</div>
             <h3>퍼스널라이징</h3>
-            <p>개인의 운동 능력과 목적에 따라 최적화된 맞춤 루틴을 AI가 작성해 드립니다.</p>
+            <p class="feature-desc">획일화된 가이드는 거부합니다. 개인의 체형, 운동 수행 능력, 식습관에 맞춘 유일무이한 맞춤 플랜을 제공합니다.</p>
           </div>
           <div class="feature-card">
             <div class="icon">🌱</div>
             <h3>지속 가능성</h3>
-            <p>무리한 다이어트 대신 일상에 스며드는 스마트한 케어로 목표를 이룹니다.</p>
+            <p class="feature-desc">극단적인 단식이나 과도한 운동 대신, 일상에 자연스럽게 녹아드는 건강한 라이프스타일 형성을 목표로 합니다.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">🎥</div>
-            <h3>YouTube 가이드</h3>
-            <p>YouTube Data API v3 연동으로 검증된 운동 가이드 영상을 즉시 확인하세요.</p>
+            <div class="icon">📊</div>
+            <h3>전문성과 데이터</h3>
+            <p class="feature-desc">감에 의존하지 않는 정밀 체성분 데이터 분석과 검증된 트레이닝 이론을 바탕으로 솔루션을 제안합니다.</p>
           </div>
         </div>
+      </div>
 
-        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
-          <button class="btn-primary" style="max-width: 200px;" onclick="switchTab('routine-page')">AI 루틴 시작하기</button>
-          <button class="btn-secondary" style="max-width: 200px;" onclick="switchTab('guide-page')">운동 영상 검색</button>
+      <!-- 브랜드 스토리 섹션 -->
+      <div class="brand-story-box">
+        <div class="section-title-wrap">
+          <span class="sub-heading-badge story-badge">BRAND STORY</span>
+          <h2>브랜드 스토리</h2>
         </div>
+        
+        <blockquote class="story-quote">
+          "운동을 시작하기는 쉽지만, 꾸준히 이어가기는 어렵습니다."
+        </blockquote>
+        
+        <p class="story-text">
+          많은 이들이 무작정 시작한 운동과 무리한 식단으로 쉽게 피로감을 느끼고 중간에 포기합니다. 헬스 매니저는 이러한 문제를 해결하기 위해 출발했습니다.
+        </p>
+        <p class="story-text">
+          복잡하고 막막한 건강 관리 과정을 명확한 데이터와 쉬운 가이드라인으로 바꾸어 드립니다. 옆에서 방향을 잡아주는 든든한 페이스메이커처럼, 당신이 원하는 목표 체중과 체형에 도달할 때까지 매일의 여정을 함께합니다.
+        </p>
       </div>
     </section>
 
-    <!-- AI 루틴 -->
+    <!-- 2. AI 루틴 매니저 -->
     <section id="routine-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
@@ -99,7 +128,7 @@
       </div>
     </section>
 
-    <!-- 운동 가이드 (유튜브) -->
+    <!-- 3. 운동 가이드 (유튜브) -->
     <section id="guide-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
@@ -124,7 +153,7 @@
       </div>
     </section>
 
-    <!-- 식단 관리 -->
+    <!-- 4. 식단 관리 -->
     <section id="diet-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
@@ -165,7 +194,7 @@
       </div>
     </section>
 
-    <!-- 일일 기록장 -->
+    <!-- 5. 일일 기록장 -->
     <section id="tracker-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
