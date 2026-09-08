@@ -1,16 +1,13 @@
 // 탭 전환 함수
 function switchTab(targetId) {
-  // 모든 탭 숨기기
   const allTabs = document.querySelectorAll('.tab-content');
   allTabs.forEach(tab => tab.classList.remove('active'));
 
-  // 선택한 탭 보이기
   const targetTab = document.getElementById(targetId);
   if (targetTab) {
     targetTab.classList.add('active');
   }
 
-  // 메뉴 하이라이트 변경
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     if (link.getAttribute('data-target') === targetId) {
@@ -23,20 +20,25 @@ function switchTab(targetId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// 유튜브 검색 함수
+function searchYoutube(query) {
+  if (!query) return;
+  const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+  window.open(searchUrl, '_blank');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. 메뉴 클릭시 화면 전환 이벤트
+  // 1. 네비게이션 탭 전환
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('data-target');
-      if (targetId) {
-        switchTab(targetId);
-      }
+      if (targetId) switchTab(targetId);
     });
   });
 
-  // 2. AI 추천 버튼 폼 제출 이벤트
+  // 2. AI 루틴 생성
   const recommendForm = document.getElementById('recommend-form');
   const recommendBtn = document.getElementById('recommend-btn');
   const resultArea = document.getElementById('result-area');
@@ -45,35 +47,29 @@ document.addEventListener('DOMContentLoaded', () => {
   if (recommendForm) {
     recommendForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const goal = document.getElementById('goal').value;
       const level = document.getElementById('level').value;
       const days = document.getElementById('days').value;
 
       recommendBtn.disabled = true;
-      recommendBtn.innerText = 'AI가 맞춤 루틴을 생성하는 중...';
+      recommendBtn.innerText = 'AI가 맞춤 루틴을 분석하는 중...';
       resultArea.classList.remove('hidden');
-      resultContent.innerText = '입력하신 조건에 맞는 최적의 루틴을 분석하고 있습니다. 잠시만 기다려주세요...';
+      resultContent.innerText = '조건에 맞는 최적의 루틴을 생성 중입니다. 잠시만 기다려주세요...';
 
       try {
         const response = await fetch('/api/recommend', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ goal, level, days }),
         });
-
         const data = await response.json();
-
         if (response.ok) {
           resultContent.innerText = data.recommendation;
         } else {
-          resultContent.innerText = `오류 발생: ${data.error || '루틴 생성 실패'}`;
+          resultContent.innerText = `오류 발생: ${data.error}`;
         }
       } catch (err) {
-        resultContent.innerText = '서버 통신 오류가 발생했습니다. 다시 시도해주세요.';
-        console.error(err);
+        resultContent.innerText = '서버 통신 오류가 발생했습니다.';
       } finally {
         recommendBtn.disabled = false;
         recommendBtn.innerText = 'AI 맞춤 루틴 생성하기';
@@ -81,14 +77,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. 기록장 저장 로직
+  // 3. 운동 가이드 검색
+  const youtubeForm = document.getElementById('youtube-search-form');
+  if (youtubeForm) {
+    youtubeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const query = document.getElementById('exercise-query').value;
+      searchYoutube(query);
+    });
+  }
+
+  // 4. 식단 관리 AI 분석
+  const dietForm = document.getElementById('diet-form');
+  const dietBtn = document.getElementById('diet-btn');
+  const dietResultArea = document.getElementById('diet-result-area');
+  const dietResultContent = document.getElementById('diet-result-content');
+
+  if (dietForm) {
+    dietForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const height = document.getElementById('height').value;
+      const weight = document.getElementById('weight').value;
+      const gender = document.getElementById('gender').value;
+      const target_weight = document.getElementById('target_weight').value;
+
+      dietBtn.disabled = true;
+      dietBtn.innerText = 'AI가 식단 가이드를 계산하는 중...';
+      dietResultArea.classList.remove('hidden');
+      dietResultContent.innerText = '신체 스펙 데이터를 바탕으로 영양 가이드를 분석 중입니다...';
+
+      try {
+        const response = await fetch('/api/diet', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ height, weight, gender, target_weight }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          dietResultContent.innerText = data.recommendation;
+        } else {
+          dietResultContent.innerText = `오류 발생: ${data.error}`;
+        }
+      } catch (err) {
+        dietResultContent.innerText = '서버 통신 오류가 발생했습니다.';
+      } finally {
+        dietBtn.disabled = false;
+        dietBtn.innerText = '맞춤 식단 플랜 받기';
+      }
+    });
+  }
+
+  // 5. 일일 기록장 저장 및 불러오기 (폰트 유지 및 로컬 스토리지)
   const saveLogBtn = document.getElementById('save-log-btn');
   const logStatus = document.getElementById('log-status');
+  const workoutInput = document.getElementById('workout-log');
+  const dietInput = document.getElementById('diet-log');
+
+  if (workoutInput && dietInput) {
+    const savedWorkout = localStorage.getItem('fitfinal_workout');
+    const savedDiet = localStorage.getItem('fitfinal_diet');
+    if (savedWorkout) workoutInput.value = savedWorkout;
+    if (savedDiet) dietInput.value = savedDiet;
+  }
 
   if (saveLogBtn) {
     saveLogBtn.addEventListener('click', () => {
-      const workout = document.getElementById('workout-log').value;
-      const diet = document.getElementById('diet-log').value;
+      const workout = workoutInput.value;
+      const diet = dietInput.value;
 
       if (!workout && !diet) {
         alert('운동이나 식단 내용을 입력해주세요.');
@@ -98,10 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('fitfinal_workout', workout);
       localStorage.setItem('fitfinal_diet', diet);
 
-      logStatus.innerText = '✅ 오늘 기록이 성공적으로 저장되었습니다!';
-      setTimeout(() => {
-        logStatus.innerText = '';
-      }, 3000);
+      logStatus.innerText = '✅ 오늘 기록이 정상적으로 저장되었습니다!';
+      setTimeout(() => { logStatus.innerText = ''; }, 3000);
     });
   }
 });
