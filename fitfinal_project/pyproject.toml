@@ -4,6 +4,3 @@ version = "0.1.0"
 dependencies = [
     "google-generativeai"
 ]
-
-[tool.vercel]
-entrypoint = "api.app:handler"
