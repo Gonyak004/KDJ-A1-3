@@ -55,7 +55,7 @@ async def recommend_routine(request: RecommendRequest):
     try:
         # Gemini API 설정 및 호출
         genai.configure(api_key=api_key.strip())
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-3.5-flash")
 
         prompt = (
             f"당신은 전문 헬스 트레이너이자 영양사입니다.\n"
