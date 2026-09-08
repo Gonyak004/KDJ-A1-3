@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitFinal - AI 맞춤 헬스케어 & 다이어트 매니저</title>
+  <title>FitFinal - AI 맞춤 헬스케어 매니저</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- 상단 네비게이션 헤더 -->
   <header class="app-header">
     <div class="header-container">
       <div class="logo">FitFinal <span>AI</span></div>
@@ -24,70 +23,52 @@
 
   <main class="main-container">
     
-    <!-- 1. 홈 화면 -->
+    <!-- 홈 -->
     <section id="home-page" class="tab-content active">
       <div class="hero-section">
         <span class="badge">SMART HEALTHCARE PLATFORM</span>
         <h1>지속 가능한 건강 관리의 시작 <span>FitFinal</span></h1>
         <p class="subtitle main-intro-text">
-          데이터 분석과 밀착 케어를 결합해 누구나 중도 포기 없이 지속 가능한 건강 관리를 완성하는 스마트 헬스케어 플랫폼입니다.
+          개인 맞춤 운동 플랜과 식단 가이드, 전문 유튜브 운동 영상까지 한곳에서 관리하세요.
         </p>
 
-        <!-- 서비스 핵심 가치 -->
-        <div class="section-title-wrap">
-          <h2>서비스 핵심 가치</h2>
-        </div>
         <div class="features-grid">
           <div class="feature-card">
             <div class="icon">🎯</div>
-            <h3>퍼스널라이징 (Personalized)</h3>
-            <p>획일화된 가이드는 거부합니다. 개인의 체형, 운동 수행 능력, 식습관에 맞춘 유일무이한 맞춤 플랜을 제공합니다.</p>
+            <h3>퍼스널라이징</h3>
+            <p>개인의 운동 능력과 목적에 따라 최적화된 맞춤 루틴을 AI가 작성해 드립니다.</p>
           </div>
           <div class="feature-card">
             <div class="icon">🌱</div>
-            <h3>지속 가능성 (Sustainable)</h3>
-            <p>극단적인 단식이나 과도한 운동 대신, 일상에 자연스럽게 녹아드는 건강한 라이프스타일 형성을 목표로 합니다.</p>
+            <h3>지속 가능성</h3>
+            <p>무리한 다이어트 대신 일상에 스며드는 스마트한 케어로 목표를 이룹니다.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">📊</div>
-            <h3>전문성과 데이터 (Professional & Data-driven)</h3>
-            <p>감에 의존하지 않는 정밀 체성분 데이터 분석과 검증된 트레이닝 이론을 바탕으로 솔루션을 제안합니다.</p>
+            <div class="icon">🎥</div>
+            <h3>YouTube 가이드</h3>
+            <p>YouTube Data API v3 연동으로 검증된 운동 가이드 영상을 즉시 확인하세요.</p>
           </div>
         </div>
 
-        <!-- 브랜드 스토리 -->
-        <div class="brand-story-card">
-          <h2>📖 브랜드 스토리</h2>
-          <blockquote class="story-quote">"운동을 시작하기는 쉽지만, 꾸준히 이어가기는 어렵습니다."</blockquote>
-          <p>
-            많은 이들이 무작정 시작한 운동과 무리한 식단으로 쉽게 피로감을 느끼고 중간에 포기합니다. 헬스 매니저는 이러한 문제를 해결하기 위해 출발했습니다.<br><br>
-            복잡하고 막막한 건강 관리 과정을 명확한 데이터와 쉬운 가이드라인으로 바꾸어 드립니다. 옆에서 방향을 잡아주는 든든한 페이스메이커처럼, 당신이 원하는 목표 체중과 체형에 도달할 때까지 매일의 여정을 함께합니다.
-          </p>
-        </div>
-
-        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center;">
-          <button class="btn-primary" style="max-width: 220px;" onclick="switchTab('routine-page')">
-            AI 맞춤 루틴 시작하기 →
-          </button>
-          <button class="btn-secondary" style="max-width: 220px;" onclick="switchTab('diet-page')">
-            식단 가이드 받기 →
-          </button>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+          <button class="btn-primary" style="max-width: 200px;" onclick="switchTab('routine-page')">AI 루틴 시작하기</button>
+          <button class="btn-secondary" style="max-width: 200px;" onclick="switchTab('guide-page')">운동 영상 검색</button>
         </div>
       </div>
     </section>
 
-    <!-- 2. AI 루틴 매니저 -->
+    <!-- AI 루틴 -->
     <section id="routine-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
           <h2>🤖 AI 맞춤 루틴 매니저</h2>
-          <p>운동 목적과 조건을 선택하시면 AI가 최적의 루틴을 설계해 드립니다.</p>
+          <p>운동 목적과 주당 횟수를 입력하고 맞춤 루틴을 확인해보세요.</p>
         </div>
 
         <form id="recommend-form">
           <div class="form-group">
             <label for="goal">운동 목표</label>
-            <select id="goal" name="goal">
+            <select id="goal">
               <option value="체중 감량 및 체지방 감소">체중 감량 & 체지방 감소</option>
               <option value="근육량 증진 및 근성장">근육량 증진 (근성장)</option>
               <option value="체력 증진 및 건강 유지">체력 증진 & 건강 유지</option>
@@ -96,8 +77,8 @@
 
           <div class="form-group">
             <label for="level">운동 수준</label>
-            <select id="level" name="level">
-              <option value="초보자">초보자 (입문 3개월 미만)</option>
+            <select id="level">
+              <option value="초보자">초보자 (3개월 미만)</option>
               <option value="중급자">중급자 (분할 운동 가능)</option>
               <option value="상급자">상급자</option>
             </select>
@@ -105,7 +86,7 @@
 
           <div class="form-group">
             <label for="days">주당 운동 횟수</label>
-            <input type="number" id="days" name="days" placeholder="예: 3" min="1" max="7" value="3">
+            <input type="number" id="days" min="1" max="7" value="3">
           </div>
 
           <button type="submit" id="recommend-btn" class="btn-primary">AI 맞춤 루틴 생성하기</button>
@@ -118,49 +99,49 @@
       </div>
     </section>
 
-    <!-- 3. 운동 가이드 (유튜브 검색) -->
+    <!-- 운동 가이드 (유튜브) -->
     <section id="guide-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
-          <h2>🎥 운동 가이드 영상 검색</h2>
-          <p>궁금한 운동 이름을 검색하시면 전문가의 시범 및 자세 가이드 영상을 찾아드립니다.</p>
+          <h2>🎥 운동 가이드 영상 검색 (YouTube)</h2>
+          <p>YouTube Data API v3를 활용해 정확한 운동 수행 및 자세 가이드를 검색합니다.</p>
         </div>
 
         <form id="youtube-search-form" style="display: flex; gap: 0.8rem;">
-          <input type="text" id="exercise-query" placeholder="예: 올바른 스쿼트 자세, 벤치프레스 루틴, 홈트 유산소" required>
-          <button type="submit" class="btn-primary" style="width: 140px;">영상 검색</button>
+          <input type="text" id="exercise-query" placeholder="예: 스쿼트, 벤치프레스, 데드리프트" required>
+          <button type="submit" class="btn-primary" style="width: 130px;">검색</button>
         </form>
 
-        <div class="quick-keywords" style="margin-top: 1.2rem;">
-          <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-sub);">인기 키워드: </span>
-          <button class="chip-btn" onclick="searchYoutube('스쿼트 자세')">#스쿼트</button>
-          <button class="chip-btn" onclick="searchYoutube('데드리프트 기초')">#데드리프트</button>
-          <button class="chip-btn" onclick="searchYoutube('푸쉬업 초보')">#푸쉬업</button>
-          <button class="chip-btn" onclick="searchYoutube('복근 운동 루틴')">#복근운동</button>
+        <div style="margin-top: 1rem;">
+          <span style="font-size: 0.85rem; color: #64748b; font-weight: bold;">추천 검색어: </span>
+          <button class="chip-btn" onclick="searchYoutube('스쿼트')">#스쿼트</button>
+          <button class="chip-btn" onclick="searchYoutube('데드리프트')">#데드리프트</button>
+          <button class="chip-btn" onclick="searchYoutube('벤치프레스')">#벤치프레스</button>
+          <button class="chip-btn" onclick="searchYoutube('푸쉬업')">#푸쉬업</button>
         </div>
+
+        <div id="youtube-result-container" style="margin-top: 2rem;"></div>
       </div>
     </section>
 
-    <!-- 4. 식단 관리 -->
+    <!-- 식단 관리 -->
     <section id="diet-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
-          <h2>🥗 맞춤 식단 관리 가이드</h2>
-          <p>신체 정보와 목표를 입력하시면 AI가 최적의 영양 섭취 전략을 제안합니다.</p>
+          <h2>🥗 맞춤 식단 관리</h2>
+          <p>신체 정보 기반의 최적 영양 섭취 비율 및 일일 권장 식단 가이드입니다.</p>
         </div>
 
         <form id="diet-form">
-          <div class="grid-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
               <label for="height">신장 (cm)</label>
-              <input type="number" id="height" placeholder="예: 175" required>
+              <input type="number" id="height" placeholder="175" required>
             </div>
-
             <div class="form-group">
               <label for="weight">현재 체중 (kg)</label>
-              <input type="number" id="weight" placeholder="예: 70" required>
+              <input type="number" id="weight" placeholder="70" required>
             </div>
-
             <div class="form-group">
               <label for="gender">성별</label>
               <select id="gender">
@@ -168,45 +149,44 @@
                 <option value="여성">여성</option>
               </select>
             </div>
-
             <div class="form-group">
               <label for="target_weight">목표 체중 (kg)</label>
-              <input type="number" id="target_weight" placeholder="예: 65" required>
+              <input type="number" id="target_weight" placeholder="65" required>
             </div>
           </div>
 
-          <button type="submit" id="diet-btn" class="btn-primary" style="margin-top: 1rem;">맞춤 식단 플랜 받기</button>
+          <button type="submit" id="diet-btn" class="btn-primary" style="margin-top: 1rem;">식단 플랜 받기</button>
         </form>
 
         <div id="diet-result-area" class="result-box hidden">
-          <div class="result-title">🥗 AI 맞춤 식단 관리 가이드</div>
+          <div class="result-title">🥗 AI 식단 가이드</div>
           <div id="diet-result-content" class="result-body"></div>
         </div>
       </div>
     </section>
 
-    <!-- 5. 일일 기록장 -->
+    <!-- 일일 기록장 -->
     <section id="tracker-page" class="tab-content">
       <div class="card-section">
         <div class="section-header">
-          <h2>📝 오늘의 운동 & 식단 일지</h2>
-          <p>오늘 하루의 운동과 식단을 기록하여 관리해보세요.</p>
+          <h2>📝 일일 기록장</h2>
+          <p>오늘 한 운동과 식단을 편하게 기록해 보세요.</p>
         </div>
 
         <form id="record-form">
           <div class="form-group">
-            <label for="workout-log">오늘 한 운동</label>
+            <label for="workout-log">오늘의 운동</label>
             <input type="text" id="workout-log" placeholder="예: 스쿼트 4세트, 런닝머신 30분">
           </div>
 
           <div class="form-group">
-            <label for="diet-log">오늘 먹은 식단</label>
-            <textarea id="diet-log" placeholder="예: 아침 - 샐러드&#10;점심 - 현미밥과 제육볶음"></textarea>
+            <label for="diet-log">오늘의 식단</label>
+            <textarea id="diet-log" placeholder="예: 아침 - 샐러드, 점심 - 닭가슴살 볶음밥"></textarea>
           </div>
 
-          <button type="button" id="save-log-btn" class="btn-secondary">일지 저장하기</button>
+          <button type="button" id="save-log-btn" class="btn-secondary">저장하기</button>
         </form>
-        <div id="log-status" style="margin-top: 12px; font-size: 0.9rem; color: #16a34a; font-weight: 600;"></div>
+        <div id="log-status" style="margin-top: 10px; font-weight: bold; color: #16a34a;"></div>
       </div>
     </section>
 

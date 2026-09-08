@@ -1,63 +1,51 @@
 :root {
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --primary: #ff6b35;
-  --primary-hover: #e85a26;
-  --accent-blue: #3b82f6;
-  --text-title: #0f172a;
-  --text-body: #475569;
-  --text-sub: #94a3b8;
-  --border-light: #e2e8f0;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --border-color: #e2e8f0;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-body);
+  background-color: var(--bg-color);
+  color: var(--text-main);
   line-height: 1.6;
 }
 
-/* 상단 헤더 */
 .app-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border-light);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  z-index: 100;
 }
 
 .header-container {
-  max-width: 1140px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0.9rem 1.5rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
 }
 
 .logo span {
-  background-color: #fff0eb;
-  color: var(--primary);
-  font-size: 0.75rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 20px;
+  color: #f59e0b;
 }
 
 .nav-menu {
@@ -66,26 +54,23 @@ body {
 }
 
 .nav-link {
-  color: var(--text-title);
   text-decoration: none;
+  color: var(--text-sub);
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  transition: all 0.2s;
-  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--primary);
-  background-color: #fff0eb;
+  background-color: #eff6ff;
 }
 
-/* 메인 컨테이너 및 탭 처리 */
 .main-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 .tab-content {
@@ -96,251 +81,202 @@ body {
   display: block;
 }
 
-/* 히어로 소개 섹션 */
-.hero-section {
-  background: linear-gradient(135deg, #eff6ff 0%, #fff5f2 100%);
-  border: 1px solid var(--border-light);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+.card-section, .hero-section {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
 }
 
 .badge {
-  display: inline-block;
-  background-color: #ffffff;
+  background: #dbeafe;
   color: var(--primary);
-  border: 1px solid #ffdcd0;
-  padding: 0.3rem 0.9rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  margin-bottom: 1rem;
 }
 
-.hero-section h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--text-title);
-  margin-bottom: 1rem;
-  line-height: 1.35;
+h1 {
+  font-size: 2rem;
+  margin: 0.8rem 0;
 }
 
-.hero-section h1 span {
+h1 span {
   color: var(--primary);
 }
 
-.main-intro-text {
-  font-size: 1.1rem;
-  color: var(--text-title);
-  font-weight: 500;
-  margin-bottom: 2.5rem;
+.subtitle {
+  color: var(--text-sub);
+  margin-bottom: 1.5rem;
 }
 
-.section-title-wrap {
-  text-align: left;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
-
-.section-title-wrap h2 {
-  font-size: 1.3rem;
-  color: var(--text-title);
-}
-
-/* 카드 그리드 */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
 .feature-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 18px;
-  padding: 1.5rem;
-  text-align: left;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+  padding: 1.2rem;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
 }
 
 .feature-card .icon {
   font-size: 1.8rem;
-  margin-bottom: 0.6rem;
-}
-
-.feature-card h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-title);
   margin-bottom: 0.4rem;
 }
 
-.feature-card p {
-  color: var(--text-sub);
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
-/* 브랜드 스토리 */
-.brand-story-card {
-  margin-top: 2.5rem;
-  background: #ffffff;
-  border: 1px solid var(--border-light);
-  border-radius: 18px;
-  padding: 2rem;
-  text-align: left;
-}
-
-.brand-story-card h2 {
-  font-size: 1.25rem;
-  color: var(--text-title);
-  margin-bottom: 0.8rem;
-}
-
-.story-quote {
-  font-style: italic;
-  font-weight: 700;
-  color: var(--primary);
-  border-left: 3px solid var(--primary);
-  padding-left: 1rem;
-  margin-bottom: 1rem;
-}
-
-.brand-story-card p {
-  color: var(--text-body);
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-/* 일반 섹션 카드 */
-.card-section {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
-
-.section-header h2 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text-title);
-  margin-bottom: 0.3rem;
-}
-
-.section-header p {
-  color: var(--text-sub);
-  font-size: 0.9rem;
-  margin-bottom: 1.8rem;
-}
-
-/* 폼 요소 (입력창 폰트 통일 처리) */
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-title);
-  margin-bottom: 0.4rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
 }
 
-/* 폰트 통일을 위해 font-family: inherit 추가 */
 input, select, textarea {
   width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: #f8fafc;
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  color: var(--text-title);
+  padding: 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
 }
 
 textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-input:focus, select:focus, textarea:focus {
-  background-color: #ffffff;
-  border-color: var(--primary);
+  height: 90px;
 }
 
 .btn-primary {
   width: 100%;
-  padding: 0.9rem;
-  background-color: var(--primary);
+  background: var(--primary);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  padding: 0.8rem;
+  border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
-}
-
-.btn-primary:disabled {
-  background-color: #cbd5e1;
-  cursor: not-allowed;
+  background: var(--primary-hover);
 }
 
 .btn-secondary {
   width: 100%;
-  padding: 0.9rem;
-  background-color: var(--accent-blue);
-  color: white;
+  background: #e2e8f0;
+  color: var(--text-main);
   border: none;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  padding: 0.8rem;
+  border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .chip-btn {
-  background-color: #f1f5f9;
-  border: 1px solid var(--border-light);
-  padding: 0.3rem 0.7rem;
-  border-radius: 15px;
+  background: #e2e8f0;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
   font-size: 0.8rem;
   cursor: pointer;
-  margin-right: 0.3rem;
-  font-family: inherit;
 }
 
-.chip-btn:hover {
-  background-color: #e2e8f0;
+/* YouTube 비디오 카드 그리드 디자인 */
+.youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.2rem;
 }
 
-/* 결과 출력 박스 */
+.youtube-card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s;
+}
+
+.youtube-card:hover {
+  transform: translateY(-3px);
+}
+
+.thumb-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+
+.thumb-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-info {
+  padding: 0.8rem;
+}
+
+.video-title {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.video-title a {
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.channel-name {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
 .result-box {
   margin-top: 1.5rem;
-  padding: 1.25rem;
-  background-color: #fff8f5;
-  border: 1px solid #ffdcd0;
-  border-radius: 12px;
+  padding: 1.2rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
 }
 
 .result-title {
   font-weight: 700;
+  margin-bottom: 0.8rem;
   color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.result-body {
-  font-size: 0.95rem;
-  color: var(--text-title);
-  white-space: pre-wrap;
-  word-break: break-word;
-  line-height: 1.7;
 }
 
 .hidden {
   display: none;
+}
+
+.loading {
+  color: var(--text-sub);
+  font-style: italic;
 }
