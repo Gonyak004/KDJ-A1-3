@@ -1,2 +1,9 @@
+[project]
+name = "fitfinal-project"
+version = "0.1.0"
+dependencies = [
+    "google-generativeai"
+]
+
 [tool.vercel]
 entrypoint = "api.recommend.index:handler"
