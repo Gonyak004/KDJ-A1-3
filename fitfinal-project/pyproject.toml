@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoints = ["api/recommend.py"]
