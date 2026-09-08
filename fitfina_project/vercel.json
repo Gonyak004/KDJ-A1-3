@@ -1,17 +1,13 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/recommend",
-      "dest": "/api/recommend/index.py"
+      "source": "/api/recommend",
+      "destination": "/api/recommend/index.py"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!api/).*)",
+      "destination": "/$1"
     }
   ]
 }
