@@ -1,26 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. 상단 메뉴 클릭 시 스크롤 이동 이벤트 처리
-  const navLinks = document.querySelectorAll('.nav-link');
+// 탭 전환 함수
+function switchTab(targetId) {
+  // 모든 탭 숨기기
+  const allTabs = document.querySelectorAll('.tab-content');
+  allTabs.forEach(tab => tab.classList.remove('active'));
 
+  // 선택한 탭 보이기
+  const targetTab = document.getElementById(targetId);
+  if (targetTab) {
+    targetTab.classList.add('active');
+  }
+
+  // 메뉴 하이라이트 변경
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    if (link.getAttribute('data-target') === targetId) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. 메뉴 클릭시 화면 전환 이벤트
+  const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      
-      // active 클래스 변경
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-
-      // target 섹션으로 스크롤 이동
-      const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+      const targetId = link.getAttribute('data-target');
+      if (targetId) {
+        switchTab(targetId);
       }
     });
   });
 
-  // 2. AI 추천 버튼 통신 (백엔드 /api/recommend 호출)
+  // 2. AI 추천 버튼 폼 제출 이벤트
   const recommendForm = document.getElementById('recommend-form');
   const recommendBtn = document.getElementById('recommend-btn');
   const resultArea = document.getElementById('result-area');
@@ -34,11 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const level = document.getElementById('level').value;
       const days = document.getElementById('days').value;
 
-      // 로딩 상태 표시
       recommendBtn.disabled = true;
-      recommendBtn.innerText = 'AI가 루틴을 생성하는 중...';
+      recommendBtn.innerText = 'AI가 맞춤 루틴을 생성하는 중...';
       resultArea.classList.remove('hidden');
-      resultContent.innerText = '맞춤 운동 루틴을 분석하고 있습니다. 잠시만 기다려주세요...';
+      resultContent.innerText = '입력하신 조건에 맞는 최적의 루틴을 분석하고 있습니다. 잠시만 기다려주세요...';
 
       try {
         const response = await fetch('/api/recommend', {
@@ -57,16 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
           resultContent.innerText = `오류 발생: ${data.error || '루틴 생성 실패'}`;
         }
       } catch (err) {
-        resultContent.innerText = '서버와의 통신에 실패했습니다. 다시 시도해 주세요.';
+        resultContent.innerText = '서버 통신 오류가 발생했습니다. 다시 시도해주세요.';
         console.error(err);
       } finally {
         recommendBtn.disabled = false;
-        recommendBtn.innerText = 'AI 루틴 생성하기';
+        recommendBtn.innerText = 'AI 맞춤 루틴 생성하기';
       }
     });
   }
 
-  // 3. 기록장 저장 버튼 (로컬 스토리지에 가볍게 저장)
+  // 3. 기록장 저장 로직
   const saveLogBtn = document.getElementById('save-log-btn');
   const logStatus = document.getElementById('log-status');
 
@@ -83,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('fitfinal_workout', workout);
       localStorage.setItem('fitfinal_diet', diet);
 
-      logStatus.innerText = '✅ 성공적으로 저장되었습니다!';
+      logStatus.innerText = '✅ 오늘 기록이 성공적으로 저장되었습니다!';
       setTimeout(() => {
         logStatus.innerText = '';
       }, 3000);

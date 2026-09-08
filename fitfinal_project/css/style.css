@@ -1,18 +1,13 @@
 :root {
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
-  --primary: #ff6b35; /* 포인트 오렌지 컬러 */
+  --primary: #ff6b35;
   --primary-hover: #e85a26;
   --accent-blue: #3b82f6;
   --text-title: #0f172a;
   --text-body: #475569;
   --text-sub: #94a3b8;
   --border-light: #e2e8f0;
-}
-
-/* 부드러운 스크롤 이동 */
-html {
-  scroll-behavior: smooth;
 }
 
 * {
@@ -28,11 +23,11 @@ body {
   line-height: 1.6;
 }
 
-/* 1. 상단 GNB 네비게이션 바 */
+/* 상단 헤더 */
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 9999; /* 클릭 차단 방지를 위해 레이어 최상단 보장 */
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-light);
@@ -67,7 +62,7 @@ body {
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav-link {
@@ -75,42 +70,40 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: color 0.2s;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.2s;
   cursor: pointer;
-  pointer-events: auto; /* 클릭 이벤트 확실히 지정 */
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--primary);
+  background-color: #fff0eb;
 }
 
-.nav-btn {
-  background-color: var(--primary);
-  color: white;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-/* 메인 컨테이너 */
+/* 메인 컨테이너 및 탭 처리 */
 .main-container {
-  max-width: 1140px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
 }
 
-/* 2. 메인 히어로 섹션 */
+.tab-content {
+  display: none; /* 기본 숨김 */
+}
+
+.tab-content.active {
+  display: block; /* 선택된 탭만 활성화 */
+}
+
+/* 히어로 소개 섹션 */
 .hero-section {
   background: linear-gradient(135deg, #eff6ff 0%, #fff5f2 100%);
   border: 1px solid var(--border-light);
   border-radius: 24px;
   padding: 3.5rem 2rem;
   text-align: center;
-  margin-bottom: 3rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
-  scroll-margin-top: 80px; /* 헤더에 가려지지 않게 스크롤 여백 보정 */
 }
 
 .badge {
@@ -123,7 +116,6 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
   margin-bottom: 1.2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
 
 .hero-section h1 {
@@ -141,15 +133,15 @@ body {
 .subtitle {
   color: var(--text-body);
   font-size: 1.05rem;
-  margin-bottom: 2rem;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
 }
 
-/* 3. 주요 기능 카드리스트 (3분할) */
+/* 카드 그리드 */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  margin-top: 2.5rem;
 }
 
 .feature-card {
@@ -159,24 +151,11 @@ body {
   padding: 1.8rem;
   text-align: left;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08);
 }
 
 .feature-card .icon {
   font-size: 2rem;
   margin-bottom: 0.8rem;
-  background-color: #f1f5f9;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
 }
 
 .feature-card h3 {
@@ -191,25 +170,17 @@ body {
   font-size: 0.9rem;
 }
 
-/* 4. 대시보드 그리드 (폼 및 기록장) */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
+/* 일반 섹션 카드 */
 .card-section {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-  scroll-margin-top: 80px; /* 헤더에 가려지지 않게 스크롤 여백 보정 */
 }
 
 .section-header h2 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--text-title);
   margin-bottom: 0.3rem;
@@ -217,11 +188,11 @@ body {
 
 .section-header p {
   color: var(--text-sub);
-  font-size: 0.85rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.8rem;
 }
 
-/* Input & Select 입력 양식 */
+/* 폼 요소 */
 .form-group {
   margin-bottom: 1.2rem;
 }
@@ -243,16 +214,13 @@ input, select, textarea {
   color: var(--text-title);
   font-size: 0.95rem;
   outline: none;
-  transition: all 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
   background-color: #ffffff;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
 }
 
-/* 버튼 스타일 */
 .btn-primary {
   width: 100%;
   padding: 0.9rem;
@@ -263,7 +231,6 @@ input:focus, select:focus, textarea:focus {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
@@ -285,14 +252,9 @@ input:focus, select:focus, textarea:focus {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
-.btn-secondary:hover {
-  opacity: 0.9;
-}
-
-/* AI 추천 결과창 */
+/* 결과 출력 박스 */
 .result-box {
   margin-top: 1.5rem;
   padding: 1.25rem;
@@ -308,10 +270,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .result-body {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-title);
-  white-space: pre-wrap; /* 줄바꿈 유지 */
-  word-break: break-word; /* 넘치는 텍스트 자동 줄바꿈 */
+  white-space: pre-wrap;
+  word-break: break-word;
   line-height: 1.7;
 }
 
