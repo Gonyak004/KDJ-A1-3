@@ -10,6 +10,11 @@
   --border-light: #e2e8f0;
 }
 
+/* 부드러운 스크롤 이동 */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +32,7 @@ body {
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 9999; /* 클릭 차단 방지를 위해 레이어 최상단 보장 */
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-light);
@@ -71,6 +76,8 @@ body {
   font-weight: 600;
   font-size: 0.95rem;
   transition: color 0.2s;
+  cursor: pointer;
+  pointer-events: auto; /* 클릭 이벤트 확실히 지정 */
 }
 
 .nav-link:hover, .nav-link.active {
@@ -103,6 +110,7 @@ body {
   text-align: center;
   margin-bottom: 3rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+  scroll-margin-top: 80px; /* 헤더에 가려지지 않게 스크롤 여백 보정 */
 }
 
 .badge {
@@ -197,6 +205,7 @@ body {
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  scroll-margin-top: 80px; /* 헤더에 가려지지 않게 스크롤 여백 보정 */
 }
 
 .section-header h2 {
@@ -261,6 +270,11 @@ input:focus, select:focus, textarea:focus {
   background-color: var(--primary-hover);
 }
 
+.btn-primary:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
 .btn-secondary {
   width: 100%;
   padding: 0.9rem;
@@ -271,6 +285,11 @@ input:focus, select:focus, textarea:focus {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
 }
 
 /* AI 추천 결과창 */
@@ -291,7 +310,9 @@ input:focus, select:focus, textarea:focus {
 .result-body {
   font-size: 0.9rem;
   color: var(--text-title);
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* 줄바꿈 유지 */
+  word-break: break-word; /* 넘치는 텍스트 자동 줄바꿈 */
+  line-height: 1.7;
 }
 
 .hidden {
