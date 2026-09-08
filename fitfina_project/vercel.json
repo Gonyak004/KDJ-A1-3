@@ -1,19 +1,17 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "functions": {
-    "api/recommend/index.py": {
-      "runtime": "python3.9"
-    }
-  },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
-      "destination": "/index.html"
+      "src": "/api/recommend",
+      "dest": "/api/recommend/index.py"
     },
     {
-      "source": "/api/recommend",
-      "destination": "/api/recommend/index.py"
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
