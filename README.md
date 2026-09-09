@@ -179,24 +179,24 @@ git clone [https://github.com/Gonyak004/KDJ-A1-3]
 
 ---
 
-**메인 홈**
+### **메인 홈**
 
 <img width="988" height="940" alt="Image" src="https://github.com/user-attachments/assets/be1edfce-1267-420b-8e86-dc75eb9b9f63" />
 
 ---
 
-**운동 가이드 서비스 메뉴 사용**
+### **운동 가이드 서비스 메뉴 사용**
 
 <img width="967" height="948" alt="Image" src="https://github.com/user-attachments/assets/a503f929-9e2d-47f9-bb99-665a7abd5966" />
 
 ---
 
-**AI 루틴 매니저 서비스 사용**
+### **AI 루틴 매니저 서비스 사용**
 
 <img width="997" height="937" alt="Image" src="https://github.com/user-attachments/assets/1d511ba1-54bd-4891-a076-2e0c26ac52f3" />
 
 ---
 
-**AI 식단 서비스 사용**
+### **AI 식단 서비스 사용**
 
 <img width="984" height="936" alt="Image" src="https://github.com/user-attachments/assets/d4365cb0-9fc3-456d-99e5-46b7427c613f" />
