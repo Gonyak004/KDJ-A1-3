@@ -144,6 +144,16 @@ git clone [https://github.com/Gonyak004/KDJ-A1-3]
       ├── requirements.txt 
       └── README.md               
 
+**백엔드 (fitfinal/api/app.py)**
+
+**CSS (fitfinal/css/style.css)**
+
+**자바스크립트 (fitfinal/js/main.js)**
+
+**프론트엔드 (fitfinal/index.html)**
+
+**의존성 패키지 (fitfinal/requirements.txt)**
+
 #
 
 ### 5. API 키 보안 관리 조치
